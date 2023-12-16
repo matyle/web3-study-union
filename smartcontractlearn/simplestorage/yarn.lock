@@ -1177,6 +1177,11 @@ diff@5.0.0:
   resolved "https://registry.yarnpkg.com/diff/-/diff-5.0.0.tgz#7ed6ad76d859d030787ec35855f5b1daf31d852b"
   integrity sha512-/VTCrvm5Z0JGty/BWHljh+BAiw3IK+2j87NGMu8Nwc/f48WoDAC395uomO9ZD117ZOBaHmkX1oyLvkVM/aIT3w==
 
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
+
 elliptic@6.5.4, elliptic@^6.5.2, elliptic@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz#da37cebd31e79a1367e941b592ed1fbebd58abbb"
@@ -2158,10 +2163,10 @@ solc@0.7.3:
     semver "^5.5.0"
     tmp "0.0.33"
 
-solc@0.7.5:
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/solc/-/solc-0.7.5.tgz#8dad9536075a113adcbcb2ace80d486b389f273c"
-  integrity sha512-RdcYGj2qjg+maWYRZPW65QvOOYbwexDT9xaOEQJtRI0TIYfzTJmslJ4f9S56VNjJsIR1zHdUIiPyuhF7wGIylw==
+solc@0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/solc/-/solc-0.8.5.tgz#f053489f7eff8fb14a7d70d625c5adbd95cf1f30"
+  integrity sha512-DKSVwLbQHXvmW9+EBFBn0bLiLsWoIzirvHLGkF1TZfN5E6aHjttAsFRYcMQOJryg4t9AX+AOKkyTlUqEcVBNqA==
   dependencies:
     command-exists "^1.2.8"
     commander "3.0.2"

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.5;
+pragma solidity ^0.8.5;
 
 contract SimpleStorage {
     // boolean,uint default 256,string, int,address, bytes
@@ -36,7 +36,7 @@ contract SimpleStorage {
     function store(uint256 _favoriteNumber) public virtual {
         favoriteNumber = _favoriteNumber;
         //  favoriteNumber = favoriteNumber+1;
-        retrieve();
+        // retrieve();
     }
 
     // view,pure 查看不消耗 gas
