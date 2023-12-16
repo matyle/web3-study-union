@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "ethers": "^6.9.0",
+    "solc": "0.7.5"
+  },
+  "scripts": {
+    "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
+  },
+  "devDependencies": {
+    "hardhat": "^2.19.2"
+  }
+}
