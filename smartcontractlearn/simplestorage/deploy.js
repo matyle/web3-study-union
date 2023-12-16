@@ -11,17 +11,14 @@ async function main() {
   );
   console.log("balance: ", ethers.formatEther(balance));
 
-  // const wallet = new ethers.Wallet(
-  //   process.env.PRIVATE_KEY,
-  //   provider
-  // )
-  // console.log("wallet: ", wallet.address)
-  const encryptedJsonKey = fs.readFileSync("./.encryptedKey.json", "utf8");
-  let wallet = ethers.Wallet.fromEncryptedJsonSync(
-    encryptedJsonKey,
-    process.env.PRIVATE_KEY_PASSWORD,
-  );
-  wallet = wallet.connect(provider);
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+  console.log("wallet: ", wallet.address);
+  // const encryptedJsonKey = fs.readFileSync("./.encryptedKey.json", "utf8");
+  // let wallet = ethers.Wallet.fromEncryptedJsonSync(
+  //   encryptedJsonKey,
+  //   process.env.PRIVATE_KEY_PASSWORD,
+  // );
+  // wallet = wallet.connect(provider);
   // read abi
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
   // read the compiled contract
@@ -32,11 +29,11 @@ async function main() {
 
   const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
   console.log("Deploying contract...");
-  const contract = await contractFactory.deploy({
-    gasPrice: 20000000000,
-    gasLimit: 6721975,
-  });
-  // console.log("Contract address: ", contractFactory.address);
+  // const contract = await contractFactory.deploy({
+  //   gasPrice: 20000000000,
+  //   gasLimit: 6721975,
+  // });
+  const contract = await contractFactory.deploy();
   // console.log(contract);
   console.log(
     "here is the deploymenttransaction: contract.deploymenttransaction()",
@@ -45,6 +42,7 @@ async function main() {
   // wait transaction receipt
   const transactionReceipt = await contract.deploymentTransaction().wait(1);
   console.log("Here is the transactionReceipt: ");
+  console.log("Contract address: ", contractFactory.address);
   console.log(transactionReceipt);
   // console.log("deploy with olny transaction data ")
   // const nonce = await wallet.getNonce();
