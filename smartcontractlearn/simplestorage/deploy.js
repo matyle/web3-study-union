@@ -1,4 +1,3 @@
-
 const ethers = require("ethers");
 const fs = require("fs");
 require("dotenv").config();
@@ -7,7 +6,9 @@ async function main() {
   console.log("deploy.js");
   const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
   console.log("rpc url: ", process.env.RPC_URL);
-  balance = await provider.getBalance("0xC33280B02119054326bbb8d4564F546dbE27b1b4")
+  balance = await provider.getBalance(
+    "0xC33280B02119054326bbb8d4564F546dbE27b1b4",
+  );
   console.log("balance: ", ethers.formatEther(balance));
 
   // const wallet = new ethers.Wallet(
@@ -16,24 +17,35 @@ async function main() {
   // )
   // console.log("wallet: ", wallet.address)
   const encryptedJsonKey = fs.readFileSync("./.encryptedKey.json", "utf8");
-  let wallet = ethers.Wallet.fromEncryptedJsonSync(encryptedJsonKey, process.env.PRIVATE_KEY_PASSWORD);
+  let wallet = ethers.Wallet.fromEncryptedJsonSync(
+    encryptedJsonKey,
+    process.env.PRIVATE_KEY_PASSWORD,
+  );
   wallet = wallet.connect(provider);
   // read abi
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
-  // read the compiled contract 
-  const binary = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.bin", "utf8");
+  // read the compiled contract
+  const binary = fs.readFileSync(
+    "./SimpleStorage_sol_SimpleStorage.bin",
+    "utf8",
+  );
 
   const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
   console.log("Deploying contract...");
-  const contract = await contractFactory.deploy({ gasPrice: 20000000000, gasLimit: 6721975 });
+  const contract = await contractFactory.deploy({
+    gasPrice: 20000000000,
+    gasLimit: 6721975,
+  });
   // console.log("Contract address: ", contractFactory.address);
   // console.log(contract);
-  console.log("here is the deploymenttransaction: contract.deploymenttransaction()");
+  console.log(
+    "here is the deploymenttransaction: contract.deploymenttransaction()",
+  );
   console.log(contract.deploymentTransaction());
   // wait transaction receipt
   const transactionReceipt = await contract.deploymentTransaction().wait(1);
-  console.log("Here is the transactionReceipt: ")
-  console.log(transactionReceipt)
+  console.log("Here is the transactionReceipt: ");
+  console.log(transactionReceipt);
   // console.log("deploy with olny transaction data ")
   // const nonce = await wallet.getNonce();
   // const transaction = {
@@ -57,11 +69,10 @@ async function main() {
   await transactionResponse.wait(1);
   const newFavoriteNumber = await contract.retrieve();
   console.log("newFavoriteNumber: ", newFavoriteNumber.toString());
-
 }
 main()
   .then(() => process.exit(0))
   .catch((error) => {
     console.error(error);
     process.exit(1);
-  })
+  });
