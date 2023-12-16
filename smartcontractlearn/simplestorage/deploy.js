@@ -10,11 +10,14 @@ async function main() {
   balance = await provider.getBalance("0xC33280B02119054326bbb8d4564F546dbE27b1b4")
   console.log("balance: ", ethers.formatEther(balance));
 
-  const wallet = new ethers.Wallet(
-    process.env.PRIVATE_KEY,
-    provider
-  )
-  console.log("wallet: ", wallet.address)
+  // const wallet = new ethers.Wallet(
+  //   process.env.PRIVATE_KEY,
+  //   provider
+  // )
+  // console.log("wallet: ", wallet.address)
+  const encryptedJsonKey = fs.readFileSync("./.encryptedKey.json", "utf8");
+  let wallet = ethers.Wallet.fromEncryptedJsonSync(encryptedJsonKey, process.env.PRIVATE_KEY_PASSWORD);
+  wallet = wallet.connect(provider);
   // read abi
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
   // read the compiled contract 

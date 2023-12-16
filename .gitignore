@@ -1,2 +1,3 @@
 smartcontractlearn/simplestorage/.env
 node_modules/
+smartcontractlearn/simplestorage/.encryptedKey.json
