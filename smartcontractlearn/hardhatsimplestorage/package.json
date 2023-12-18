@@ -11,6 +11,7 @@
     "@typechain/ethers-v6": "^0.5.0",
     "@typechain/hardhat": "^9.0.0",
     "chai": "^4.2.0",
+    "dotenv": "^16.3.1",
     "ethers": "^6.4.0",
     "hardhat": "^2.19.2",
     "hardhat-gas-reporter": "^1.0.8",
