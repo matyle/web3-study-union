@@ -29,7 +29,6 @@ contract SimpleStorage {
             name: _name
         });
         people.push(newPeople);
-
         nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 
