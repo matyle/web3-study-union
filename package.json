@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "solidity-coverage": "^0.8.5"
+  }
+}
